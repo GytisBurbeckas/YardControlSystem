@@ -1,0 +1,61 @@
+﻿@model YardControlSystem.Models.ViewModels.CreateOrderViewModel
+
+<form method="post" asp-action="Create">
+    <div class="border p-3">
+        @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
+        <div class="form-group row">
+            <h2 class="text-black-50 pl-3">Naujas užsakymas</h2>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="text-danger">@ViewBag.ErrorMessage</div>
+                <div class="form-group row">
+                    <div class="col-6">
+                        <label asp-for="Order.TrailerLicensePlate">Transporto priemonės valstybiniai nr.</label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-6">
+                        <input asp-for="Order.TrailerLicensePlate" class="form-control" />
+                        <span asp-validation-for="Order.TrailerLicensePlate" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-6">
+                        <label asp-for="Order.PickUpWarehouseId">Pakrovimo sandėlys</label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-6">
+                        <select asp-for="PickUpWarehouse" asp-items=Model.Warehouses>
+                            <option selected="selected" value=Model.Warehouses[0]></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-6">
+                        <label asp-for="Order.DropOffWarehouseId">Iškrovimo sandėlys</label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-6">
+                        <select asp-for="DropOffWarehouse" asp-items=Model.Warehouses>
+                            <option selected="selected" value=Model.Warehouses[1]></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-8 offset-2 row">
+                        <div class="col">
+                            <input type="submit" class="btn btn-info w-75" value="Sukurti" />
+                        </div>
+                        <div class="col">
+                            <a asp-controller="Order" asp-action="OrdersView" class="btn btn-danger w-75">Atgal</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>
